@@ -2,7 +2,7 @@ import cv2
 
 # Carrega a imagem em alta resolução
 image_path = "samples/"
-image_path = image_path + "4.jpg"
+image_path = image_path + "6.jpeg"
 image = cv2.imread(image_path)
 
 # Redimensiona a imagem para 500x500 pixels
