@@ -17,7 +17,7 @@ for filename in os.listdir(known_folder):
         image = face_recognition.load_image_file(image_path)
         
         # Verificar se a imagem tem pelo menos um rosto
-        encodings = face_recognition.face_encodings(image)
+        encodings = face_recognition.face_encodings(image, num_jitters=5, model="large")
         if encodings:  # Se a lista não estiver vazia
             known_encodings.append(encodings[0])
 
@@ -37,7 +37,7 @@ while True:
 
     # Encontrar rostos no frame redimensionado
     face_locations = face_recognition.face_locations(small_frame, model="cnn")
-    face_encodings = face_recognition.face_encodings(small_frame, face_locations)
+    face_encodings = face_recognition.face_encodings(small_frame, face_locations, num_jitters=5, model="large")
 
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
         # Ajustar coordenadas para o tamanho original do frame
@@ -47,7 +47,7 @@ while True:
         left *= 4
 
         # Verificar correspondências
-        matches = face_recognition.compare_faces(known_encodings, face_encoding)
+        matches = face_recognition.compare_faces(known_encodings, face_encoding, tolerance=0.5)
         name = "Desconhecido"
         color = (0, 0, 255)  # Vermelho para rosto desconhecido
 

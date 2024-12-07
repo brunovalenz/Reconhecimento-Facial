@@ -47,7 +47,7 @@ while True:
         left *= 4
 
         # Verificar correspondências
-        matches = face_recognition.compare_faces(known_encodings, face_encoding)
+        matches = face_recognition.compare_faces(known_encodings, face_encoding, tolerance=0.5)
         name = "Desconhecido"
         color = (0, 0, 255)  # Vermelho para rosto desconhecido
 
