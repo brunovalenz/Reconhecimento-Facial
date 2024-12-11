@@ -5,7 +5,8 @@ import cv2
 video_capture = cv2.VideoCapture(0)
 
 # Carregar e codificar o rosto conhecido
-known_image = face_recognition.load_image_file("conhecido.jpg")
+path = "exemplos/"
+known_image = face_recognition.load_image_file(path+"conhecido.jpg")
 known_encoding = face_recognition.face_encodings(known_image)[0]
 
 while True:

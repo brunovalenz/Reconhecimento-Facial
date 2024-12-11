@@ -35,7 +35,12 @@ while True:
     # Redimensionar o frame para processamento mais rápido
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
-    # Encontrar rostos no frame redimensionado
+    # Encontrar rostos no frame redimensionado usando o modelo padrão HOG (Histogram of Oriented Gradients):
+    
+    # Baseado em características geométricas e de gradientes de bordas. O HOG analisa a orientação de bordas em pequenas 
+    # células da imagem para identificar padrões comuns a rostos.
+
+    # Utiliza uma técnica de detecção linear com um classificador SVM (Máquina de Vetores de Suporte).
     face_locations = face_recognition.face_locations(small_frame)
     face_encodings = face_recognition.face_encodings(small_frame, face_locations)
 
